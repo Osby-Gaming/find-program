@@ -1,5 +1,7 @@
-import { promisified as regedit, type RegistryItem } from "regedit";
+import { promisified as regedit, setExternalVBSLocation as VBA, type RegistryItem } from "regedit";
 import type { RequireAtLeastOne } from "../types";
+
+export const setExternalVBSLocation = VBA;
 
 export interface Clue {
   windows_uninstall_registry_key?: string;
@@ -29,7 +31,7 @@ function getValidInstallLocationValueName(item: RegistryItem): string | null {
   return null;
 }
 
-export default async function findProgram(
+export async function findProgram(
   clue:
     | RequireAtLeastOne<
         Clue,

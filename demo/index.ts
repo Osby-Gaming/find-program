@@ -1,4 +1,4 @@
-import { findProgram } from "../dist/esm";
+import { findProgram } from "../src/index";
 
 // Finds the install location of Counter-Strike 2 by looking for the uninstall registry key.
 console.log(await findProgram({
