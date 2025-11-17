@@ -9,19 +9,24 @@
     "require": "./dist/cjs/index.cjs"
   },
   "scripts": {
-    "build": "concurrently \"bun run build-browser\" \"bun run build-node\" \"bun run build-bun\" \"bun run build:declaration\"",
+    "build": "concurrently \"bun run build-node\" \"bun run build-bun\" \"bun run build:declaration\"",
     "build-browser": "bun build ./src/index.ts --outdir ./dist/browser --target browser",
     "build-node": "bun build ./src/index.ts --outdir ./dist/cjs --target node --format cjs",
     "build-bun": "bun build ./src/index.ts --outdir ./dist/esm --target bun",
-    "dev": "concurrently \"bun run dev-browser\" \"bun run dev-node\" \"bun run dev-bun\" \"bun run dev:declaration\"",
+    "dev": "concurrently \"bun run dev-node\" \"bun run dev-bun\" \"bun run dev:declaration\"",
     "dev-browser": "bun build ./src/index.ts --outdir ./dist/browser --target browser --watch",
     "dev-node": "bun build ./src/index.ts --outdir ./dist/cjs --target node --format cjs --watch",
     "dev-bun": "bun build ./src/index.ts --outdir ./dist/esm --target bun --watch",
     "build:declaration": "tsc ./src/index.ts --emitDeclarationOnly --declaration --outFile ./dist/ts/index.js",
     "dev:declaration": "tsc ./src/index.ts --emitDeclarationOnly --declaration --outFile ./dist/ts/index.js --watch",
-    "demo": "concurrently \"bun run dev-browser\" \"bun ./demo/index.ts\""
+    "demo": "concurrently \"bun run dev-bun\" \"bun ./demo/index.ts\""
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "@types/node": "^24.10.1",
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "regedit": "^5.1.4"
   }
 }
